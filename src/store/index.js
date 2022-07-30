@@ -44,6 +44,11 @@ export default new Vuex.Store({
       _state.game.finished = true
       _state.game.draw = true
     },
+    resetPoints(_state) {
+      for (const player of _state.players) {
+        player.points = 0
+      }
+    },
     over(_state, results) {
       console.log(results)
       _state.players[--results.player].points++

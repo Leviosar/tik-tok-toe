@@ -35,6 +35,9 @@
         <v-card rounded="lg" color="dark" class="border-primary border-8">
           <v-text-field v-model="$store.state.players[0].name" solo hide-details></v-text-field>
         </v-card>
+        <v-card rounded="lg" color="dark" class="border-primary border-8 mt-4">
+          <v-text-field disabled v-model="$store.state.players[0].points" solo hide-details></v-text-field>
+        </v-card>
       </v-col>
 
       <v-col cols="12" sm="6">
@@ -53,8 +56,9 @@
             </div>
           </v-responsive>
         </v-card>
-        <v-row justify="center" class="mt-8">
+        <v-row justify="space-between" class="mt-8">
           <v-btn @click="reset" color="warning">Reiniciar partida</v-btn>
+          <v-btn @click="resetPoints" color="error">Resetar pontos</v-btn>
         </v-row>
       </v-col>
 
@@ -64,6 +68,9 @@
         </v-row>
         <v-card rounded="lg" color="dark" class="border-secondary border-8">
           <v-text-field v-model="$store.state.players[1].name" solo hide-details></v-text-field>
+        </v-card>
+        <v-card rounded="lg" color="dark" class="border-secondary border-8 mt-4">
+          <v-text-field disabled v-model="$store.state.players[1].points" solo hide-details></v-text-field>
         </v-card>
       </v-col>
 
@@ -88,6 +95,9 @@ export default {
       for (const tile of this.$refs.tiles) {
         tile.clearState()
       }
+    },
+    resetPoints() {
+      this.$store.commit("resetPoints")
     }
   },
 };
