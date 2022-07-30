@@ -45,7 +45,8 @@ export default new Vuex.Store({
       _state.game.draw = true
     },
     over(_state, results) {
-      _state.players[results.player].points++
+      console.log(results)
+      _state.players[--results.player].points++
       _state.game.lastWinnerMove = results.move
       _state.game.finished = true
     }
